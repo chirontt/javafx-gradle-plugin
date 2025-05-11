@@ -39,9 +39,13 @@ import java.util.stream.Collectors;
 
 public enum JavaFXPlatform {
 
+    FREEBSD("bsd", "freebsd-x86_64", "BSD", MachineArchitecture.X86_64),
+    FREEBSD_AARCH64("bsd-aarch64", "freebsd-aarch_64", "BSD", MachineArchitecture.ARM64),
     LINUX("linux", "linux-x86_64", OperatingSystemFamily.LINUX, MachineArchitecture.X86_64),
     LINUX_AARCH64("linux-aarch64", "linux-aarch_64", OperatingSystemFamily.LINUX, MachineArchitecture.ARM64),
+    LINUX_RISCV64("linux-riscv64", "linux-riscv64", OperatingSystemFamily.LINUX, "RISCV64"),
     WINDOWS("win", "windows-x86_64", OperatingSystemFamily.WINDOWS, MachineArchitecture.X86_64),
+    WINDOWS_AARCH64("win-aarch64", "windows-aarch_64", OperatingSystemFamily.WINDOWS, MachineArchitecture.ARM64),
     OSX("mac", "osx-x86_64", OperatingSystemFamily.MACOS, MachineArchitecture.X86_64),
     OSX_AARCH64("mac-aarch64", "osx-aarch_64", OperatingSystemFamily.MACOS, MachineArchitecture.ARM64);
 
@@ -93,13 +97,24 @@ public enum JavaFXPlatform {
 
     public static JavaFXPlatform fromString(String platform) {
         switch (platform) {
+            case "bsd":
+            case "freebsd":
+                return JavaFXPlatform.FREEBSD;
+            case "bsd-aarch64":
+            case "freebsd-aarch64":
+                return JavaFXPlatform.FREEBSD_AARCH64;
             case "linux":
                 return JavaFXPlatform.LINUX;
             case "linux-aarch64":
                 return JavaFXPlatform.LINUX_AARCH64;
+            case "linux-riscv64":
+                return JavaFXPlatform.LINUX_RISCV64;
             case "win":
             case "windows":
                 return JavaFXPlatform.WINDOWS;
+            case "win-aarch64":
+            case "windows-aarch64":
+                return JavaFXPlatform.WINDOWS_AARCH64;
             case "osx":
             case "mac":
             case "macos":

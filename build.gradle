@@ -45,7 +45,12 @@ gradlePlugin {
 publishing {
     repositories {
         maven {
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+            def sonatypeUrl = providers.gradleProperty('sonatypeUrl')
+            if (sonatypeUrl.isPresent()) {
+                url = sonatypeUrl.get()
+            } else {
+                url = "https://oss.sonatype.org/content/repositories/snapshots/"
+            }
             def sonatypeUsername = providers.gradleProperty('sonatypeUsername')
             def sonatypePassword = providers.gradleProperty('sonatypePassword')
             if (sonatypeUsername.isPresent() && sonatypePassword.isPresent()) {

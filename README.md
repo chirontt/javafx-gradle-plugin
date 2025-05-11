@@ -1,3 +1,9 @@
+This fork adds support for `Linux riscv64`, `Windows on Arm64` and `FreeBSD aarch64/x86_64` platforms.
+
+Original [README.md](https://github.com/openjfx/javafx-gradle-plugin/blob/master/README.md) text is as followed.
+
+----
+
 # JavaFX Gradle Plugin
 
 Simplifies working with JavaFX 11+ for gradle projects.
